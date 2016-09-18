@@ -1,0 +1,90 @@
+<html>
+<head>
+	<title>
+		Trello Dashboard
+	</title>
+
+<link rel="stylesheet" type="text/css" href="../jquery-ui.min.css" />
+<link rel="stylesheet" type="text/css" href="../trello-css.css" />
+<script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="../js/jquery-ui.min.js"></script>
+<script type="text/javascript" src="../js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../bootstrap.min.css" />
+<link rel="stylesheet" type="text/css" href="../bootstrap-responsive.min.css" />
+<script type="text/javascript" src="../controller/trelloController.js"></script>
+<script type="text/javascript" src="../model/TaskModel.js"></script>
+<script type="text/javascript" src="../view/view.js"></script>
+<!-- <script type="text/javascript" language="javascript" src="../json/data.json"></script>  -->
+ <script type="text/javascript">
+             $(document).ready(function() {
+        var model = new TaskModel([]),
+        view = new ListView(model, {
+            'saveList' : $('#saveList'), 
+            'addCard' : $('.addCard'),
+            'toggler' : $('.toggler'),
+            'saveTask' : $('.saveTask')
+        }),
+        controller = new ListController(model, view);
+        controller.init();
+    view.show();
+            });
+
+        </script>
+</head>
+<body>
+<div class="alert alert-info header" role="alert"><img src="../logo-trello.jpg" alt="" height="50" width="60"></center></div>
+<!-- <div class="alert alert-info" role="alert"></div> -->
+<div id="list1" class='mainlist card '>
+
+    <div class="sublist card ">
+          <ul class="sublist well text-left">
+           <span><strong>Card-1</strong></span>
+                <li>Task-a</li>
+                <li>Task-b</li>
+                <li>Task-c</li>
+                <li>Task-d</li>
+          </ul>
+          <button class="well addCard">Add Task</button>
+     </div>
+
+     <div class="sublist card">
+          <ul class="sublist well">
+          <strong>Card-2</strong>
+                <li>Task-1</li>
+                <li>Task-2</li>
+                <li>Task-3</li>
+                <li>Task-4</li>
+          </ul>
+          <button class="well addCard">Add Task</button>
+      </div>
+
+      <div class="sublist card">
+          <ul class="sublist well">
+          <strong>Card-3</strong>
+                <li>Task-i</li>
+                <li>Task-ii</li>
+                <li>Task-iii</li>
+                <li>Task-iv</li>
+          </ul>
+          <button class="well addCard">Add Task</button>
+      </div>
+
+     <div class='toggle_parent'>
+        <div class='toggleHolder'>
+          <span class='toggler'><input type="text" id= "add" placeholder="Add a List..."></span>
+          <span class='toggler' id="close" style='display:none;'>
+            X
+          </span>
+        </div>
+        <div class='toggled_content' style='display:none;'>
+            <table>
+              <tr><input type="text" placeholder="Add a List..." id="listName"></tr>
+              <tr><button id="saveList">Add</button></tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
